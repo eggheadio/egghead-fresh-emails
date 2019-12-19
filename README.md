@@ -14,16 +14,9 @@ and afterwards just open your browser using the link [http://localhost:3000/](ht
 
 ### Running from command line
 
-Following will generate `email.html` in root directory.
+Generate `email.html` in root directory:
 
 ```bash
-npm run generate
-```
-
-You can also run and get your email inside console:
-
-```bash
-npm run build
 npm run generate
 ```
 
