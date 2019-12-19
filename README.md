@@ -1,4 +1,4 @@
-# egghead-fresh email templates & HTML markup generator
+# mjml-react email templates
 
 ## Usage
 
@@ -26,6 +26,10 @@ And you can automate things by sending the generated email to your test inbox:
 npm run build
 npm run generate | mail -s "$(echo -e "This is a test email\nContent-Type: text/html")" myemail@myprovider.com
 ```
+
+---
+
+📃[mjml documentation](https://mjml.io/documentation/)
 
 ---
 
