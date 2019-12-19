@@ -29,4 +29,8 @@ npm run generate | mail -s "$(echo -e "This is a test email\nContent-Type: text/
 
 ---
 
+📃[mjml documentation](https://mjml.io/documentation/)
+
+---
+
 Based on [mjml](https://mjml.io/) and [mjml-react](https://github.com/wix-incubator/mjml-react).
