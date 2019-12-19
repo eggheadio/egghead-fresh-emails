@@ -25,9 +25,11 @@
   },
   "dependencies": {
     "express": "^4.16.4",
+    "lodash": "^4.17.15",
     "mjml": "^4.3.1",
     "mjml-react": "^1.0.45",
     "node-fetch": "^2.6.0",
+    "nodemon": "^2.0.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-markdown": "^4.2.2",
