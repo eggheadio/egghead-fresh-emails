@@ -95,55 +95,52 @@ function Resources({
     resources.length > 0 && (
       <>
         <MjmlText>{title}</MjmlText>
-
-        {resources.map(resource => {
-          return (
-            <MjmlSection
-              padding="16px"
-              key={resource.slug}
-              fontFamily="Open Sans"
-            >
-              <MjmlSection borderBottom="1px solid #f1f1f1" paddingTop="0px">
-                {getImage && (
-                  <MjmlImage
-                    align="left"
-                    padding="0"
-                    width="80px"
-                    src={getImage(resource)}
-                  ></MjmlImage>
-                )}
-                <MjmlButton
-                  fontFamily="Open Sans, sans-serif"
-                  href={`https://egghead.io${resource.path}`}
-                  fontSize="18px"
+        <MjmlSection>
+          {resources.map(resource => {
+            return (
+              <MjmlColumn
+                width="50%"
+                padding="16px"
+                key={resource.slug}
+                fontFamily="Open Sans, sans-serif"
+              >
+                <MjmlSection
+                  width="50%"
+                  borderBottom="1px solid #f1f1f1"
                   paddingTop="0px"
-                  innerPadding="0"
-                  padding="0px"
-                  color="#007AFF"
-                  textAlign="left"
-                  backgroundColor="transparent"
-                  textDecoration="none"
                 >
-                  {resource.title}
-                </MjmlButton>
-                <MjmlText
-                  padding="0px"
-                  fontFamily="Open Sans, sans-serif"
-                  lineHeight="1.5"
-                >
-                  <ReactMarkdown source={getDescription(resource)} />
-                </MjmlText>
-                <MjmlText
-                  fontSize="12px"
-                  color="gray"
-                  fontFamily="Open Sans, sans-serif"
-                >
-                  {byLine(resource)}
-                </MjmlText>
-              </MjmlSection>
-            </MjmlSection>
-          )
-        })}
+                  {getImage && (
+                    <MjmlImage
+                      align="left"
+                      padding="0"
+                      width="80px"
+                      src={getImage(resource)}
+                    ></MjmlImage>
+                  )}
+
+                  <MjmlButton
+                    href={`https://egghead.io${resource.path}`}
+                    fontSize="18px"
+                    innerPadding="0"
+                    paddingBottom="0px"
+                    color="#007AFF"
+                    textAlign="left"
+                    backgroundColor="transparent"
+                    textDecoration="none"
+                  >
+                    {resource.title}
+                  </MjmlButton>
+                  <MjmlText paddingTop="20px" fontSize="12px" color="gray">
+                    {byLine(resource)}
+                  </MjmlText>
+                  <MjmlText padding="0px" lineHeight="1.5">
+                    <ReactMarkdown source={getDescription(resource)} />
+                  </MjmlText>
+                </MjmlSection>
+              </MjmlColumn>
+            )
+          })}
+        </MjmlSection>
       </>
     )
   )
