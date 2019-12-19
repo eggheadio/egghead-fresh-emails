@@ -1,0 +1,42 @@
+{
+  "name": "egghead-fresh-emails",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src --out-dir dist",
+    "build:watch": "babel src --out-dir dist --watch",
+    "prestart": "npm run build",
+    "start": "npm run build:watch & nodemon ./dist/server.js --watch ./dist",
+    "generate": "node ./dist/cli.js"
+  },
+  "author": {
+    "name": "Mantas Miliukas",
+    "email": "mantasm@wix.com"
+  },
+  "homepage": "https://github.com/wix-incubator/mjml-react-example",
+  "bugs": "https://github.com/wix-incubator/mjml-react-example/issues",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "axios-hooks": "^1.9.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.16.4",
+    "mjml": "^4.3.1",
+    "mjml-react": "^1.0.45",
+    "node-fetch": "^2.6.0",
+    "nodemon": "^1.18.9",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-markdown": "^4.2.2",
+    "react-scripts": "^3.1.1",
+    "use-data-api": "^1.0.1",
+    "use-http": "^0.1.99"
+  }
+}
