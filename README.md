@@ -1,4 +1,4 @@
-# egghead fresh html emails generator
+# egghead-fresh email templates & HTML markup generator
 
 ## Usage
 
