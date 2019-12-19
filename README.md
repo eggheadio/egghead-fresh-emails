@@ -1,4 +1,4 @@
-# egghead-fresh email templates & HTML markup generator
+# mjml-react email templates
 
 ## Usage
 
