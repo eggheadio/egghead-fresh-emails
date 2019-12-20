@@ -57,7 +57,10 @@ export function generate(data, DAYS_BACK) {
               </ul>
             </div>
           </MjmlText>
-
+          <MjmlText fontFamily="Open Sans, sans-serif">
+            <wtf>const something = 0</wtf>
+            <wtf>let blabla = 'bla'</wtf>
+          </MjmlText>
           <Resources
             title="New Courses"
             resources={courses}

@@ -26,13 +26,16 @@
   "dependencies": {
     "express": "^4.16.4",
     "lodash": "^4.17.15",
+    "mailbrush": "0.0.8",
     "mjml": "^4.3.1",
     "mjml-react": "^1.0.45",
     "node-fetch": "^2.6.0",
     "nodemon": "^2.0.2",
+    "prismjs": "^1.17.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-markdown": "^4.2.2",
+    "react-prism": "^4.3.2",
     "react-scripts": "^3.1.1"
   }
 }
