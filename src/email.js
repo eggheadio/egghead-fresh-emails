@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
+import {readFileSync} from 'fs'
 
 import {
   Mjml,
@@ -20,6 +21,8 @@ import {
   MjmlGroup,
 } from 'mjml-react'
 
+const css = readFileSync('./assets/styles.css').toString()
+
 export function generate(data, DAYS_BACK) {
   const {
     playlists = [],
@@ -32,21 +35,17 @@ export function generate(data, DAYS_BACK) {
   return (
     <Mjml>
       <MjmlHead>
-        <MjmlTitle>Last Minute Offer</MjmlTitle>
-        <MjmlPreview>Last Minute Offer...</MjmlPreview>
-
-        <MjmlRaw>
-          <style>{`a {color: #007AFF;} body { font-family: "Open Sans", sans-serif;} .code {white-space: pre; display: block;}`}</style>
-        </MjmlRaw>
+        <MjmlTitle>
+          What's up at egghead for the last {DAYS_BACK} days...
+        </MjmlTitle>
+        <MjmlPreview>
+          What's up at egghead for the last {DAYS_BACK} days...
+        </MjmlPreview>
+        <MjmlStyle>{css}</MjmlStyle>
       </MjmlHead>
       <MjmlBody width={600}>
-        {/*  <MjmlSection fullWidth backgroundColor="#efefef">
-          <MjmlColumn>
-            <MjmlImage src="https://static.wixstatic.com/media/5cb24728abef45dabebe7edc1d97ddd2.jpg" />
-          </MjmlColumn>
-        </MjmlSection> */}
-        <MjmlSection fontFamily="Open Sans, sans-serif">
-          <MjmlText fontFamily="Open Sans, sans-serif">
+        <MjmlSection>
+          <MjmlText>
             <h1>What's up at egghead for the last {DAYS_BACK} days...</h1>
             <div>
               <ul>
@@ -57,7 +56,7 @@ export function generate(data, DAYS_BACK) {
               </ul>
             </div>
           </MjmlText>
-          <MjmlText fontFamily="Open Sans, sans-serif">
+          <MjmlText>
             <pre>{`const foo = () => {}`}</pre>
           </MjmlText>
           <Resources
@@ -73,13 +72,6 @@ export function generate(data, DAYS_BACK) {
             byLine={podcast => `hosted by ${podcast.contributors.join(',')}`}
             getDescription={podcast => podcast.summary}
           />
-        </MjmlSection>
-        <MjmlSection>
-          <MjmlColumn>
-            <MjmlText>
-              <a href="/">Go Back</a>
-            </MjmlText>
-          </MjmlColumn>
         </MjmlSection>
       </MjmlBody>
     </Mjml>

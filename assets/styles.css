@@ -1,7 +1,7 @@
-.red {
-  color: red;
+body {
+  font-family: 'Open Sans', sans-serif !important;
 }
 
-.blue {
-  color: blue;
+a {
+  color: #007aff;
 }
