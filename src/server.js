@@ -1,3 +1,4 @@
+import '@babel/polyfill'
 import settings from './settings'
 import express from 'express'
 import {render} from 'mjml-react'
@@ -6,8 +7,10 @@ const fetch = require('node-fetch')
 const Prism = require('prismjs'),
   loadLanguages = require('prismjs/components/index')
 const mailbrush = require('mailbrush')
+const he = require('he')
+import {namedEntityToHexCode} from 'mjml-react/utils'
 
-loadLanguages(['php', 'python', 'javascript'])
+loadLanguages(['php', 'python', 'javascript', 'bash', 'html', 'css'])
 
 const port = 3000
 const app = express()
@@ -19,11 +22,6 @@ const options = {
   },
 }
 
-const snippet = `{
-  "key": "value",
-  "key2": "value 2"
-}`
-
 fetch(
   `https://egghead.io/api/v1/fresh?d=${settings.DAYS_BACK}&pop=${settings.POPULAR_COUNT}`
 )
@@ -31,24 +29,27 @@ fetch(
   .then(res => res.json())
   .then(data =>
     app.get('*', (req, res) => {
-      const codeRegex = /(?<=(<wtf>))(\w|\d|\n|[().,\-:;@#$=%^&*\[\]"'+–/\/®°⁰!?{}|`~]| )+?(?=(<\/wtf>))/gm
-      const {html} = render(email1.generate(data, settings.DAYS_BACK), {
+      const codeRegex = /(?<=(<pre>))(\w|\d|\n|[().,\-:;@#$=%^&*\[\]"'+–/\/®°⁰!?{}|`~]| )+?(?=(<\/pre>))/gm
+      let {html} = render(email1.generate(data, settings.DAYS_BACK), {
         validationLevel: 'soft',
       })
-
-      const match = [html.match(codeRegex)]
-
-      // TODO: match multiple rather than only first
-
-      match.forEach((match, i) => {
-        mailbrush.convert(match[i], options, output => {
-          // Returns HTML with inlined CSS for email client compatibility
-          //console.log('highlighted code:', html)
-
-          const html2 = html.replace(match[i], output)
-          res.send(html2)
+      const codeMatches = html.match(codeRegex)
+      let arr = []
+      if (codeMatches) {
+        codeMatches.forEach((m, i, ms) => {
+          m = he.decode(m)
+          mailbrush.convert(m, options, output => {
+            arr.push(output)
+            if (i === ms.length - 1) {
+              const newHtml = html.replace(codeRegex, () => arr.shift())
+              namedEntityToHexCode(newHtml)
+              res.send(newHtml)
+            }
+          })
         })
-      })
+      } else {
+        res.send(html)
+      }
     })
   )
 

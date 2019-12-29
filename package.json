@@ -18,24 +18,26 @@
   "bugs": "https://github.com/wix-incubator/mjml-react-example/issues",
   "license": "MIT",
   "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.2.2",
-    "@babel/preset-env": "^7.3.1",
-    "@babel/preset-react": "^7.0.0"
+    "@babel/cli": "^7.7.7",
+    "@babel/core": "^7.7.7",
+    "@babel/polyfill": "^7.7.0",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/preset-react": "^7.7.4"
   },
   "dependencies": {
-    "express": "^4.16.4",
+    "express": "^4.17.1",
+    "he": "^1.2.0",
     "lodash": "^4.17.15",
     "mailbrush": "0.0.8",
-    "mjml": "^4.3.1",
-    "mjml-react": "^1.0.45",
+    "mjml": "^4.5.1",
+    "mjml-react": "^1.0.57",
     "node-fetch": "^2.6.0",
     "nodemon": "^2.0.2",
     "prismjs": "^1.17.1",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
     "react-markdown": "^4.2.2",
     "react-prism": "^4.3.2",
-    "react-scripts": "^3.1.1"
+    "react-scripts": "^3.3.0"
   }
 }

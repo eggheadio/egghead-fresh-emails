@@ -36,7 +36,7 @@ export function generate(data, DAYS_BACK) {
         <MjmlPreview>Last Minute Offer...</MjmlPreview>
 
         <MjmlRaw>
-          <style>{`a {color: #007AFF;} body { font-family: "Open Sans", sans-serif;}`}</style>
+          <style>{`a {color: #007AFF;} body { font-family: "Open Sans", sans-serif;} .code {white-space: pre; display: block;}`}</style>
         </MjmlRaw>
       </MjmlHead>
       <MjmlBody width={600}>
@@ -58,8 +58,7 @@ export function generate(data, DAYS_BACK) {
             </div>
           </MjmlText>
           <MjmlText fontFamily="Open Sans, sans-serif">
-            <wtf>const something = 0</wtf>
-            <wtf>let blabla = 'bla'</wtf>
+            <pre>{`const foo = () => {}`}</pre>
           </MjmlText>
           <Resources
             title="New Courses"
