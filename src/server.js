@@ -8,7 +8,6 @@ const Prism = require('prismjs'),
   loadLanguages = require('prismjs/components/index')
 const mailbrush = require('mailbrush')
 const he = require('he')
-import {namedEntityToHexCode} from 'mjml-react/utils'
 
 loadLanguages(['php', 'python', 'javascript', 'bash', 'html', 'css'])
 
@@ -34,15 +33,16 @@ fetch(
         validationLevel: 'soft',
       })
       const codeMatches = html.match(codeRegex)
-      let arr = []
+      let codeSnippets = []
       if (codeMatches) {
-        codeMatches.forEach((m, i, ms) => {
-          m = he.decode(m)
-          mailbrush.convert(m, options, output => {
-            arr.push(output)
+        codeMatches.forEach((codeSnippet, i, ms) => {
+          codeSnippet = he.decode(codeSnippet)
+          mailbrush.convert(codeSnippet, options, output => {
+            codeSnippets.push(output)
             if (i === ms.length - 1) {
-              const newHtml = html.replace(codeRegex, () => arr.shift())
-              namedEntityToHexCode(newHtml)
+              const newHtml = html.replace(codeRegex, () =>
+                codeSnippets.shift()
+              )
               res.send(newHtml)
             }
           })
