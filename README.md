@@ -27,6 +27,11 @@ npm run build
 npm run generate | mail -s "$(echo -e "This is a test email\nContent-Type: text/html")" myemail@myprovider.com
 ```
 
+### Syntax highlighting
+
+Example 
+```<MjmlText><pre>const foo = () => {}</pre></MjmlText>```
+
 ---
 
 📃[mjml documentation](https://mjml.io/documentation/)
