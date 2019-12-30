@@ -36,10 +36,10 @@ export function generate(data, DAYS_BACK) {
     <Mjml>
       <MjmlHead>
         <MjmlTitle>
-          What's up at egghead for the last {DAYS_BACK} days...
+          {`What's up at egghead for the last ${DAYS_BACK} days...`}
         </MjmlTitle>
         <MjmlPreview>
-          What's up at egghead for the last {DAYS_BACK} days...
+          {`What's up at egghead for the last ${DAYS_BACK} days...`}
         </MjmlPreview>
         <MjmlStyle>{css}</MjmlStyle>
       </MjmlHead>
@@ -58,6 +58,12 @@ export function generate(data, DAYS_BACK) {
           </MjmlText>
           <MjmlText>
             <pre>{`const foo = () => {}`}</pre>
+            <pre>{`{
+  "key": "value",
+  "key2": "value 2"
+  "key3": 3
+}
+`}</pre>
           </MjmlText>
           <Resources
             title="New Courses"

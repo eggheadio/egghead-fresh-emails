@@ -1,22 +1,22 @@
-import '@babel/polyfill'
-import settings from './settings'
 import express from 'express'
 import {render} from 'mjml-react'
-import * as email1 from './email'
-const fetch = require('node-fetch')
-const Prism = require('prismjs'),
-  loadLanguages = require('prismjs/components/index')
-const mailbrush = require('mailbrush')
-const he = require('he')
+import settings from './settings'
+import fetch from 'node-fetch'
+import loadLanguages from 'prismjs/components/index'
+import mailbrush from 'mailbrush'
+import he from 'he'
 
-loadLanguages(['php', 'python', 'javascript', 'bash', 'html', 'css'])
+import * as email1 from './email'
 
 const port = 3000
 const app = express()
 
+// code blocks syntax highlighting
+loadLanguages(['php', 'python', 'javascript', 'bash', 'css'])
 const options = {
   language: 'javascript',
   cssOptions: {
+    // example:
     // backgroundColor: 'pink',
   },
 }
@@ -28,22 +28,24 @@ fetch(
   .then(res => res.json())
   .then(data =>
     app.get('*', (req, res) => {
-      const codeRegex = /(?<=(<pre>))(\w|\d|\n|[().,\-:;@#$=%^&*\[\]"'+–/\/®°⁰!?{}|`~]| )+?(?=(<\/pre>))/gm
       let {html} = render(email1.generate(data, settings.DAYS_BACK), {
         validationLevel: 'soft',
       })
-      const codeMatches = html.match(codeRegex)
+
+      const codeRegex = /(?<=(<pre>))(\w|\d|\n|[().,\-:;@#$=%^&*\[\]"'+–/\/®°⁰!?{}|`~]| )+?(?=(<\/pre>))/gm
+      const codeBlocks = html.match(codeRegex)
       let codeSnippets = []
-      if (codeMatches) {
-        codeMatches.forEach((codeSnippet, i, ms) => {
+
+      if (codeBlocks) {
+        codeBlocks.forEach((codeSnippet, i, ms) => {
           codeSnippet = he.decode(codeSnippet)
           mailbrush.convert(codeSnippet, options, output => {
             codeSnippets.push(output)
             if (i === ms.length - 1) {
-              const newHtml = html.replace(codeRegex, () =>
+              const htmlWithCodeBlocks = html.replace(codeRegex, () =>
                 codeSnippets.shift()
               )
-              res.send(newHtml)
+              res.send(htmlWithCodeBlocks)
             }
           })
         })
