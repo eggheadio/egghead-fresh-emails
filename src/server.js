@@ -32,7 +32,8 @@ fetch(
         validationLevel: 'soft',
       })
 
-      const codeRegex = /(?<=(<pre>))(\w|\d|\n|[().,\-:;@#$=%^&*\[\]"'+–/\/®°⁰!?{}|`~]| )+?(?=(<\/pre>))/gm
+      // https://regex101.com/r/qZnGcu/4
+      const codeRegex = /(?<=(<pre>))(\w|\d|\n|[().,\-:;@#$=>%^&*\[\]"'+–/\/®°⁰!?{}|`~]| )+?(?=(<\/pre>))/gm
       const codeBlocks = html.match(codeRegex)
       let codeSnippets = []
 

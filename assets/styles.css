@@ -1,7 +1,23 @@
-body {
-  font-family: 'Open Sans', sans-serif !important;
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Open Sans', system-ui !important;
+}
+
+pre {
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace !important;
 }
 
 a {
   color: #007aff;
+}
+
+.code {
+  display: block;
+  white-space: pre;
+  margin: 1em 0px;
 }

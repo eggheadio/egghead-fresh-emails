@@ -42,6 +42,10 @@ export function generate(data, DAYS_BACK) {
           {`What's up at egghead for the last ${DAYS_BACK} days...`}
         </MjmlPreview>
         <MjmlStyle>{css}</MjmlStyle>
+        <MjmlFont
+          name="Open Sans"
+          href="https://fonts.googleapis.com/css?family=Open+Sans"
+        />
       </MjmlHead>
       <MjmlBody width={600}>
         <MjmlSection>
