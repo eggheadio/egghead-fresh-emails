@@ -31,6 +31,7 @@
     "mailbrush": "0.0.8",
     "mjml": "^4.5.1",
     "mjml-react": "^1.0.57",
+    "moment": "^2.24.0",
     "node-fetch": "^2.6.0",
     "nodemon": "^2.0.2",
     "prismjs": "^1.17.1",

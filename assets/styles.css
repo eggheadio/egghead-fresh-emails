@@ -8,12 +8,15 @@ h5 {
   font-family: 'Open Sans', system-ui !important;
 }
 
-pre {
-  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace !important;
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 400;
 }
 
-a {
-  color: #007aff;
+pre {
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace !important;
 }
 
 .code {
