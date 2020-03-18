@@ -15,6 +15,11 @@ h4 {
   font-weight: 400;
 }
 
+body {
+  background-color: #eef0f5;
+  padding-top: 20px;
+}
+
 pre {
   font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace !important;
 }
